@@ -174,12 +174,12 @@ servidor.get('/listPost', async (req, res)=>{
     run().catch(console.dir);
 })
 
-servidor.put('/editPost', async (req, res)=>{
+servidor.put('/editPost/:id', async (req, res)=>{
     try {
         const client = new MongoClient(uri);
         const mainDB = client.db("mainDB");
         const Post = mainDB.collection("Post");
-        const filter = {Titulo:req.body.Titulo};
+        const filter = {id:req.params.id};
         const options = { upsert: true };
         const updateDoc = {
             $set: {
@@ -201,12 +201,12 @@ servidor.put('/editPost', async (req, res)=>{
     run().catch(console.dir);
 })
 
-servidor.delete('/deletePost', async (req, res)=>{
+servidor.delete('/deletePost/:id', async (req, res)=>{
     try {
         const client = new MongoClient(uri);
         const mainDB = client.db("mainDB");
         const Post = mainDB.collection("Post");
-        const query = {Titulo:req.body.Titulo};
+        const query = {id:req.params.id};
         const result = await Post.deleteOne(query);
         if (result.deletedCount === 1) {
             console.log("Se borro el Post correctamente");
