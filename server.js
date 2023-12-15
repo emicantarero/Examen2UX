@@ -191,7 +191,7 @@ servidor.put('/editPost', async (req, res)=>{
             `${result.matchedCount} documento cumplio con las caracteristicas establecidas, se actualizaron ${result.modifiedCount} documento(s)`,
          );
         res.status(200).send("El post se actualizo correctamente")
-        res.status(200).send(`${result.matchedCount} documento cumplio con las caracteristicas establecidas, se actualizaron ${result.modifiedCount} documento(s)`)
+        //res.status(200).send(`${result.matchedCount} documento cumplio con las caracteristicas establecidas, se actualizaron ${result.modifiedCount} documento(s)`)
     } catch(error){
         res.status(500).send("Algo salio mal, no se pudo actualizar el post")
         console.log(error);
